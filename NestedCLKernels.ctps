@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="12"/>
+    <BuildModes Active="Default"/>
+    <Units>
+      <Unit>
+        <Filename Value="NestedCLKernels.ppr"/>
+        <FRMtype Value="0"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="0"/>
+        <CursorPos Y="24"/>
+        <UsageCount Value="23"/>
+      </Unit>
+      <Unit>
+        <Filename Value="NestedCLKernelsMainForm.pas"/>
+        <FRMtype Value="200"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmNestedCLKernelsMain"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="0"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="231"/>
+        <CursorPos X="75" Y="240"/>
+        <UsageCount Value="23"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\MiscUtils\CLHeaders.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="1"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="244"/>
+        <CursorPos Y="270"/>
+        <UsageCount Value="23"/>
+        <Loaded Value="True"/>
+      </Unit>
+    </Units>
+    <JumpHistory HistoryIndex="29">
+      <Position>
+        <Filename Value="NestedCLKernelsMainForm.pas"/>
+        <Caret Line="145" TopLine="129"/>
+      </Position>
+      <Position>
+        <Filename Value="NestedCLKernelsMainForm.pas"/>
+        <Caret Line="147" TopLine="129"/>
+      </Position>
+      <Position>
+        <Filename Value="NestedCLKernelsMainForm.pas"/>
+        <Caret Line="148" TopLine="129"/>
+      </Position>
+      <Position>
+        <Filename Value="NestedCLKernelsMainForm.pas"/>
+        <Caret Line="150" TopLine="129"/>
+      </Position>
+      <Position>
+        <Filename Value="NestedCLKernelsMainForm.pas"/>
+        <Caret Line="135" TopLine="129"/>
+      </Position>
+      <Position>
+        <Filename Value="NestedCLKernelsMainForm.pas"/>
+        <Caret Line="137" TopLine="129"/>
+      </Position>
+      <Position>
+        <Filename Value="NestedCLKernelsMainForm.pas"/>
+        <Caret Line="139" TopLine="129"/>
+      </Position>
+      <Position>
+        <Filename Value="NestedCLKernelsMainForm.pas"/>
+        <Caret Line="145" TopLine="129"/>
+      </Position>
+      <Position>
+        <Filename Value="NestedCLKernelsMainForm.pas"/>
+        <Caret Line="147" TopLine="129"/>
+      </Position>
+      <Position>
+        <Filename Value="NestedCLKernelsMainForm.pas"/>
+        <Caret Line="148" TopLine="129"/>
+      </Position>
+      <Position>
+        <Filename Value="NestedCLKernelsMainForm.pas"/>
+        <Caret Line="150" TopLine="129"/>
+      </Position>
+      <Position>
+        <Filename Value="NestedCLKernelsMainForm.pas"/>
+        <Caret Line="135" TopLine="129"/>
+      </Position>
+      <Position>
+        <Filename Value="NestedCLKernelsMainForm.pas"/>
+        <Caret Line="137" TopLine="129"/>
+      </Position>
+      <Position>
+        <Filename Value="NestedCLKernelsMainForm.pas"/>
+        <Caret Line="130" Column="23" TopLine="129"/>
+      </Position>
+      <Position>
+        <Filename Value="NestedCLKernelsMainForm.pas"/>
+        <Caret Line="137" Column="39" TopLine="129"/>
+      </Position>
+      <Position>
+        <Filename Value="NestedCLKernelsMainForm.pas"/>
+        <Caret Line="141" Column="54" TopLine="129"/>
+      </Position>
+      <Position>
+        <Filename Value="NestedCLKernelsMainForm.pas"/>
+        <Caret Line="154" Column="25" TopLine="145"/>
+      </Position>
+      <Position>
+        <Filename Value="NestedCLKernelsMainForm.pas"/>
+        <Caret Line="156" Column="123" TopLine="145"/>
+      </Position>
+      <Position>
+        <Filename Value="NestedCLKernelsMainForm.pas"/>
+        <Caret Line="141" Column="46" TopLine="127"/>
+      </Position>
+      <Position>
+        <Filename Value="..\MiscUtils\CLHeaders.pas"/>
+        <Caret Line="194" Column="16" TopLine="187"/>
+      </Position>
+      <Position>
+        <Filename Value="NestedCLKernelsMainForm.pas"/>
+        <Caret Line="249" Column="52" TopLine="242"/>
+      </Position>
+      <Position>
+        <Filename Value="NestedCLKernelsMainForm.pas"/>
+        <Caret Line="256" Column="52" TopLine="249"/>
+      </Position>
+      <Position>
+        <Filename Value="NestedCLKernelsMainForm.pas"/>
+        <Caret Line="89" Column="19" TopLine="82"/>
+      </Position>
+      <Position>
+        <Filename Value="NestedCLKernelsMainForm.pas"/>
+        <Caret Line="91" Column="19" TopLine="84"/>
+      </Position>
+      <Position>
+        <Filename Value="NestedCLKernelsMainForm.pas"/>
+        <Caret Line="214" Column="12" TopLine="204"/>
+      </Position>
+      <Position>
+        <Filename Value="NestedCLKernelsMainForm.pas"/>
+        <Caret Line="238" Column="81" TopLine="221"/>
+      </Position>
+      <Position>
+        <Filename Value="NestedCLKernelsMainForm.pas"/>
+        <Caret Line="226" Column="67" TopLine="218"/>
+      </Position>
+      <Position>
+        <Filename Value="NestedCLKernelsMainForm.pas"/>
+        <Caret Line="72" Column="16" TopLine="63"/>
+      </Position>
+      <Position>
+        <Filename Value="NestedCLKernelsMainForm.pas"/>
+        <Caret Line="78" TopLine="65"/>
+      </Position>
+      <Position>
+        <Filename Value="NestedCLKernelsMainForm.pas"/>
+        <Caret Line="277" Column="37" TopLine="254"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+  <Debugging>
+    <BreakPoints>
+      <Item>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="NestedCLKernelsMainForm.pas"/>
+        <Line Value="173"/>
+      </Item>
+    </BreakPoints>
+  </Debugging>
+</CONFIG>
