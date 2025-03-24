@@ -2,6 +2,7 @@ __kernel void MatCmp(
   __global uchar* ABackgroundBmp,
   __global uchar* ASubBmp,
   __global int* AResultedErrCount,
+  __global uchar* AKernelDone,
   const unsigned int ABackgroundWidth,
   const unsigned int ASubBmpWidth,
   const unsigned int ASubBmpHeight,
@@ -38,6 +39,7 @@ __kernel void MatCmp(
   }  //for
   AResultedErrCount[YIdx] = ErrCount;
   //AResultedErrCount[YIdx] = get_work_dim();  //Uncomment, to get the value of get_work_dim on a slave kernel.
+  AKernelDone[YIdx] = 1;
 }
                                            
 __kernel void SlideSearch(
@@ -45,6 +47,7 @@ __kernel void SlideSearch(
   __global uchar* ASubBmp,
   __global int* AResultedErrCount,
   __global int* ADebuggingInfo,
+  __global uchar* AKernelDone,
   const unsigned int ABackgroundWidth,
   const unsigned int ASubBmpWidth,
   const unsigned int ASubBmpHeight,
@@ -52,7 +55,7 @@ __kernel void SlideSearch(
   const unsigned int AYOffset,
   const uchar AColorError,
   const long ASlaveQueue,
-  const unsigned ATotalErrorCount)
+  const unsigned int ATotalErrorCount)
 {
   queue_t SlaveQueue = (queue_t)ASlaveQueue; //get_default_queue() requies OpenCL >= 2.0 and __opencl_c_device_enqueue    (so... it may not be available)
   clk_event_t AllKernelsEvent;
@@ -63,6 +66,7 @@ __kernel void SlideSearch(
   MyFlags = CLK_ENQUEUE_FLAGS_NO_WAIT;
   int i, j, k = 0;
   bool Found = false;
+  bool AllKernelsDone;
   int EnqKrnErr = -1234;
   int EnqMrkErr = -4567;
   int XOffset = AXOffset;
@@ -72,6 +76,9 @@ __kernel void SlideSearch(
   {
     for (j = 0; j < XOffset; j++)
     {
+      for (k = 0; k < ASubBmpHeight; k++)
+        AKernelDone[k] = 0;
+
       EnqKrnErr = enqueue_kernel(
         SlaveQueue,
         MyFlags,
@@ -79,7 +86,22 @@ __kernel void SlideSearch(
         0,                //comment for err -10
         NULL,             //comment for err -10
         &AllKernelsEvent, //comment for err -10
-        ^{MatCmp(ABackgroundBmp, ASubBmp, AResultedErrCount, ABackgroundWidth, ASubBmpWidth, ASubBmpHeight, i, j, AColorError, ASlaveQueue);});
+        ^{MatCmp(ABackgroundBmp, ASubBmp, AResultedErrCount, AKernelDone, ABackgroundWidth, ASubBmpWidth, ASubBmpHeight, i, j, AColorError, ASlaveQueue);});
+
+        //wait for all kernels to be done
+        AllKernelsDone = false;
+        while (!AllKernelsDone)
+        {
+          AllKernelsDone = true;
+          for (k = 0; k < ASubBmpHeight; k++)
+            if (AKernelDone[k] == 0)
+            {
+              AllKernelsDone = false;
+              break;
+            }
+          //it would be nice to have a sleep call here
+        } //while
+
 
       ADebuggingInfo[0] = EnqKrnErr;
 
