@@ -244,6 +244,11 @@ var
   KernelFilePath: string;
 begin
   KernelFilePath := StringReplace(lbeKernelCode.Text, '$AppDir$', ExtractFileDir(ParamStr(0)), [rfReplaceAll]);
+
+  {$IFnDEF Windows}
+    KernelFilePath := StringReplace(KernelFilePath, '\', '/', [rfReplaceAll]);
+  {$ENDIF}
+
   if not FileExists(KernelFilePath) then
   begin
     MessageDlg(Application.Title, 'File not found:' + #13#10 + KernelFilePath, mtError, [mbOK], '');
@@ -989,6 +994,34 @@ begin
   LoadSettingsFromIni;
   GetOpenCLInfo;
   LoadKernelFileIntoEditor;
+
+  {$IFDEF UNIX}    //Manual corrections for GTK2
+    lbeOpenCLPath.Top := lbeOpenCLPath.Top - 3;
+    lbeKernelCode.Top := lbeKernelCode.Top + 3;
+
+    lblModified.Left := spdbtnRunKernelOnDevice.Left;
+    lblOptions.Left := spdbtnRunKernelOnDevice.Left;
+    chkUseMinusG.Left := spdbtnRunKernelOnDevice.Left;
+    chkUseKernelArgInfo.Left := spdbtnRunKernelOnDevice.Left;
+
+    lblSrcBmpWidth.Left := spnedtSrcBmpWidth.Left;
+    lblSrcBmpHeight.Left := spnedtSrcBmpHeight.Left;
+    lblSubBmpWidth.Left := spnedtSubBmpWidth.Left;
+    lblSubBmpHeight.Left := spnedtSubBmpHeight.Left;
+    lblSubBmpXPos.Left := spnedtSubBmpXPos.Left;
+    lblSubBmpHeight1.Left := spnedtSubBmpYPos.Left;
+    lblColorErrorLevel.Left := spnedtColorErrorLevel.Left;
+    lblTotalErrorCount.Left := spnedtTotalErrorCount.Left;
+
+    lblSrcBmpWidth.Top := lblSrcBmpWidth.Top - 4;
+    lblSrcBmpHeight.Top := lblSrcBmpHeight.Top - 4;
+    lblSubBmpWidth.Top := lblSubBmpWidth.Top - 4;
+    lblSubBmpHeight.Top := lblSubBmpHeight.Top - 4;
+    lblSubBmpXPos.Top := lblSubBmpXPos.Top - 4;
+    lblSubBmpHeight1.Top := lblSubBmpHeight1.Top - 4;
+    lblColorErrorLevel.Top := lblColorErrorLevel.Top - 4;
+    lblTotalErrorCount.Top := lblTotalErrorCount.Top - 4;
+  {$ENDIF}
 end;
 
 end.
