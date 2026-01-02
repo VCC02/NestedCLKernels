@@ -25,6 +25,7 @@
 unit NestedCLKernelsMainForm;
 
 {$mode objfpc}{$H+}
+//{$mode Delphi}{$H+}
 
 interface
 
@@ -903,6 +904,7 @@ begin
 
     Error := OpenCLDll.clGetPlatformIDs(0, nil, @PlatformCount);
     LogCallResult(Error, 'clGetPlatformIDs', 'PlatformCount: ' + IntToStr(PlatformCount));
+    AddToLog('');
     AddToLog('PlatformCount: ' + IntToStr(PlatformCount));
 
     SetLength(FAllCLDevices, PlatformCount);
@@ -918,15 +920,16 @@ begin
         rdgrpPlatforms.Items.Add(GetPlatformInfo(PlatformIDs[i], CL_PLATFORM_NAME, 'PlatformName') + ' / ' +
                                  GetPlatformInfo(PlatformIDs[i], CL_PLATFORM_VERSION, 'PlatformVersion'));
 
-        AddToLog(GetPlatformInfoStr(i, PlatformIDs[i], CL_PLATFORM_PROFILE, 'PlatformProfile'));
-        AddToLog(GetPlatformInfoStr(i, PlatformIDs[i], CL_PLATFORM_VERSION, 'PlatformVersion'));
-        AddToLog(GetPlatformInfoStr(i, PlatformIDs[i], CL_PLATFORM_NAME, 'PlatformName'));
-        AddToLog(GetPlatformInfoStr(i, PlatformIDs[i], CL_PLATFORM_VENDOR, 'PlatformVendor'));
-        AddToLog(GetPlatformInfoStr(i, PlatformIDs[i], CL_PLATFORM_EXTENSIONS, 'PlatformExtensions'));
+        AddToLog('Platform[' + IntToStr(i) + ']:');
+        AddToLog('  ' + GetPlatformInfoStr(i, PlatformIDs[i], CL_PLATFORM_PROFILE, 'PlatformProfile'));
+        AddToLog('  ' + GetPlatformInfoStr(i, PlatformIDs[i], CL_PLATFORM_VERSION, 'PlatformVersion'));
+        AddToLog('  ' + GetPlatformInfoStr(i, PlatformIDs[i], CL_PLATFORM_NAME, 'PlatformName'));
+        AddToLog('  ' + GetPlatformInfoStr(i, PlatformIDs[i], CL_PLATFORM_VENDOR, 'PlatformVendor'));
+        AddToLog('  ' + GetPlatformInfoStr(i, PlatformIDs[i], CL_PLATFORM_EXTENSIONS, 'PlatformExtensions'));
 
         Error := OpenCLDll.clGetDeviceIDs(PlatformIDs[i], CL_DEVICE_TYPE_GPU, 0, nil, @DeviceCount);
         LogCallResult(Error, 'clGetDeviceIDs', 'DeviceCount: ' + IntToStr(DeviceCount));
-        AddToLog('DeviceCount: ' + IntToStr(DeviceCount));
+        AddToLog('  ' + 'DeviceCount: ' + IntToStr(DeviceCount));
 
         SetLength(FAllCLDevices[i], DeviceCount);
 
@@ -940,20 +943,22 @@ begin
             FAllCLDevices[i][j] := GetDeviceInfo(DeviceIDs[j], CL_DEVICE_NAME, 'DeviceName') + ' / ' +
                                    GetDeviceInfo(DeviceIDs[j], CL_DEVICE_OPENCL_C_VERSION, 'DeviceOpenCLCVersion');
 
-            AddToLog(GetDeviceInfoStr(i, j, DeviceIDs[j], CL_DEVICE_NAME, 'DeviceName'));
-            AddToLog(GetDeviceInfoStr(i, j, DeviceIDs[j], CL_DEVICE_VENDOR, 'DeviceVendor'));
-            AddToLog(GetDeviceInfoStr(i, j, DeviceIDs[j], CL_DEVICE_VERSION, 'DeviceVersion'));
-            AddToLog(GetDeviceInfoStr(i, j, DeviceIDs[j], CL_DEVICE_PROFILE, 'DeviceProfile'));
-            AddToLog(GetDeviceInfoStr(i, j, DeviceIDs[j], CL_DEVICE_OPENCL_C_VERSION, 'DeviceOpenCLCVersion'));
-            AddToLog(GetDeviceInfoStr(i, j, DeviceIDs[j], CL_DEVICE_EXTENSIONS, 'DeviceExtensions'));
+            AddToLog('  Device[' + IntToStr(j) + ']:');
+            AddToLog('    ' + GetDeviceInfoStr(i, j, DeviceIDs[j], CL_DEVICE_NAME, 'DeviceName'));
+            AddToLog('    ' + GetDeviceInfoStr(i, j, DeviceIDs[j], CL_DEVICE_VENDOR, 'DeviceVendor'));
+            AddToLog('    ' + GetDeviceInfoStr(i, j, DeviceIDs[j], CL_DEVICE_VERSION, 'DeviceVersion'));
+            AddToLog('    ' + GetDeviceInfoStr(i, j, DeviceIDs[j], CL_DEVICE_PROFILE, 'DeviceProfile'));
+            AddToLog('    ' + GetDeviceInfoStr(i, j, DeviceIDs[j], CL_DEVICE_OPENCL_C_VERSION, 'DeviceOpenCLCVersion'));
+            AddToLog('    ' + GetDeviceInfoStr(i, j, DeviceIDs[j], CL_DEVICE_EXTENSIONS, 'DeviceExtensions'));
+            AddToLog('    ' + GetDeviceInfoStr(i, j, DeviceIDs[j], CL_DEVICE_PLATFORM_VERSION, 'DevicePlatformVersion'));
 
-            AddToLog(GetDeviceInfoStr(i, j, DeviceIDs[j], CL_DEVICE_TYPE_INFO, 'DeviceTypeInfo', True));    //CL_DEVICE_TYPE_GPU
-            AddToLog(GetDeviceInfoStr(i, j, DeviceIDs[j], CL_DEVICE_GLOBAL_MEM_SIZE, 'DeviceGlobalMemSize', True));
-            AddToLog(GetDeviceInfoStr(i, j, DeviceIDs[j], CL_DEVICE_IMAGE_SUPPORT, 'DeviceImageSupport', True));
-            AddToLog(GetDeviceInfoStr(i, j, DeviceIDs[j], CL_DEVICE_LOCAL_MEM_SIZE, 'DeviceLocalMemSize', True));
-            AddToLog(GetDeviceInfoStr(i, j, DeviceIDs[j], CL_DEVICE_AVAILABLE, 'DeviceAvailable', True));
-            AddToLog(GetDeviceInfoStr(i, j, DeviceIDs[j], CL_DEVICE_COMPILER_AVAILABLE, 'DeviceCompilerAvailable', True));
-            AddToLog(GetDeviceInfoStr(i, j, DeviceIDs[j], CL_DEVICE_EXECUTION_CAPABILITIES, 'DeviceExecutionCapabilities', True));
+            AddToLog('    ' + GetDeviceInfoStr(i, j, DeviceIDs[j], CL_DEVICE_TYPE_INFO, 'DeviceTypeInfo', True));    //CL_DEVICE_TYPE_GPU
+            AddToLog('    ' + GetDeviceInfoStr(i, j, DeviceIDs[j], CL_DEVICE_GLOBAL_MEM_SIZE, 'DeviceGlobalMemSize', True));
+            AddToLog('    ' + GetDeviceInfoStr(i, j, DeviceIDs[j], CL_DEVICE_IMAGE_SUPPORT, 'DeviceImageSupport', True));
+            AddToLog('    ' + GetDeviceInfoStr(i, j, DeviceIDs[j], CL_DEVICE_LOCAL_MEM_SIZE, 'DeviceLocalMemSize', True));
+            AddToLog('    ' + GetDeviceInfoStr(i, j, DeviceIDs[j], CL_DEVICE_AVAILABLE, 'DeviceAvailable', True));
+            AddToLog('    ' + GetDeviceInfoStr(i, j, DeviceIDs[j], CL_DEVICE_COMPILER_AVAILABLE, 'DeviceCompilerAvailable', True));
+            AddToLog('    ' + GetDeviceInfoStr(i, j, DeviceIDs[j], CL_DEVICE_EXECUTION_CAPABILITIES, 'DeviceExecutionCapabilities', True));
           end;
         finally
           Freemem(DeviceIDs, DeviceCount * SizeOf(cl_device_id));
@@ -992,7 +997,14 @@ begin
   {$ENDIF}
 
   LoadSettingsFromIni;
-  GetOpenCLInfo;
+
+  memLog.Lines.BeginUpdate;
+  try
+    GetOpenCLInfo;
+  finally
+    memLog.Lines.EndUpdate;
+  end;
+
   LoadKernelFileIntoEditor;
 
   {$IFDEF UNIX}    //Manual corrections for GTK2

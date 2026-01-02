@@ -34,8 +34,7 @@ uses
   athreads,
   {$ENDIF}
   Interfaces, // this includes the CT adLCL widgetset
-  Forms, NestedCLKernelsMainForm, CLHeaders
-  { you can add units after this };
+  Forms, NestedCLKernelsMainForm, CLHeaders;
 
 {$R *.res}
 

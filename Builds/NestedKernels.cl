@@ -116,9 +116,14 @@ __kernel void SlideSearch(
         DifferentCount += AResultedErrCount[k];
 
       int TotalErrorCount = ATotalErrorCount;
-      if ((DifferentCount < TotalErrorCount) || (EnqKrnErr < 0))
+      if (DifferentCount < TotalErrorCount)
       {
         Found = true;
+        break;
+      }
+
+      if (EnqKrnErr < 0)
+      {
         break;
       }
     }  //for j
