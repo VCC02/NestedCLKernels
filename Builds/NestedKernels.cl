@@ -86,7 +86,7 @@ __kernel void SlideSearch(
         0,                //comment for err -10
         NULL,             //comment for err -10
         &AllKernelsEvent, //comment for err -10
-        ^{MatCmp(ABackgroundBmp, ASubBmp, AResultedErrCount, AKernelDone, ABackgroundWidth, ASubBmpWidth, ASubBmpHeight, i, j, AColorError, ASlaveQueue);});
+        ^{MatCmp(ABackgroundBmp, ASubBmp, AResultedErrCount, AKernelDone, ABackgroundWidth, ASubBmpWidth, ASubBmpHeight, j, i, AColorError, SlaveQueue);});
 
         //wait for all kernels to be done
         AllKernelsDone = false;

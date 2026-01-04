@@ -586,8 +586,8 @@ begin
                           Error := OpenCLDll.clSetKernelArg(CLKernel, 10, SizeOf(Byte), @ColorError);
                           LogCallResult(Error, 'clSetKernelArg', 'ColorError argument set.');
 
-                          Error := OpenCLDll.clSetKernelArg(CLKernel, 11, SizeOf(cl_ulong), SlaveCmdQueue);  //using SizeOf(cl_ulong), because the parameter is a QWord on kernel
-                          LogCallResult(Error, 'clSetKernelArg', 'SlaveCmdQueue argument set.');
+                          Error := OpenCLDll.clSetKernelArg(CLKernel, 11, SizeOf(cl_ulong), @SlaveCmdQueue);  //using SizeOf(cl_ulong), because the parameter is a QWord on kernel
+                          LogCallResult(Error, 'clSetKernelArg', 'SlaveCmdQueue argument set.');  //This was plain SlaveCmdQueue, instead of @SlaveCmdQueue.
 
                           Error := OpenCLDll.clSetKernelArg(CLKernel, 12, SizeOf(ATotalErrorCount), @ATotalErrorCount);
                           LogCallResult(Error, 'clSetKernelArg', 'TotalErrorCount argument set.');
