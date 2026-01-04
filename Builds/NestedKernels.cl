@@ -105,7 +105,7 @@ __kernel void SlideSearch(
 
       ADebuggingInfo[0] = EnqKrnErr;
 
-      EnqMrkErr = enqueue_marker(SlaveQueue, 1, &AllKernelsEvent, &FinalEvent);
+      EnqMrkErr = enqueue_marker(SlaveQueue, 1, AllKernelsEvent, &FinalEvent);
       ADebuggingInfo[1] = EnqMrkErr;
 
       release_event(AllKernelsEvent); //should be called here, right after enqueue_marker?
